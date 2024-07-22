@@ -66,9 +66,9 @@ number_of_random_demonstrations = N_SHOTS - number_of_demonstrations_per_label *
 
 def create_demonstrations(dataset: str) -> str:
     if dataset == "SST5":
-        path = "src/reference_implementations/fairness_measurement/czarnowska_analysis/resources/processed_sst5.tsv"
+        path = "unstated_norms_llm_bias/prompt_based_classification/resources//processed_sst5.tsv"
     else:
-        path = "src/reference_implementations/fairness_measurement/czarnowska_analysis/resources/processed_semeval.tsv"
+        path = "unstated_norms_llm_bias/prompt_based_classification/resources//processed_semeval.tsv"
     if dataset != "ZeroShot":
         df = pd.read_csv(path, sep="\t", header=0)
         # Trying to balance the number of labels represented in the demonstrations
