@@ -5,9 +5,9 @@ def create_demonstrations(
     dataset: str, number_of_demonstrations_per_label: int, number_of_random_demonstrations: int
 ) -> str:
     if dataset == "SST5":
-        path = "unstated_norms_llm_bias/prompt_based_classification/resources//processed_sst5.tsv"
+        path = "unstated_norms_llm_bias/prompt_based_classification/resources/processed_sst5.tsv"
     else:
-        path = "unstated_norms_llm_bias/prompt_based_classification/resources//processed_semeval.tsv"
+        path = "unstated_norms_llm_bias/prompt_based_classification/resources/processed_semeval.tsv"
     if dataset != "ZeroShot":
         df = pd.read_csv(path, sep="\t", header=0)
         # Trying to balance the number of labels represented in the demonstrations
