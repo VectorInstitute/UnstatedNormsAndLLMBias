@@ -1,22 +1,40 @@
-from unstated_norms_llm_bias.prompt_based_classification.prompt_experiments.prompting_czarnowska_llama2_7b import (
-    create_demonstrations as llama2_demos,
-)
-from unstated_norms_llm_bias.prompt_based_classification.prompt_experiments.prompting_czarnowska_llama_7b import (
-    create_demonstrations as llama_demos,
-)
-from unstated_norms_llm_bias.prompt_based_classification.prompt_experiments.prompting_czarnowska_opt6_7b import (
-    create_demonstrations as opt_demos,
-)
+import random
+
+import numpy as np
+import torch
+
+from unstated_norms_llm_bias.prompt_based_classification.prompt_experiments.utils import create_demonstrations
+
+np.random.seed(2024)
+random.seed(2024)
+torch.manual_seed(2024)
 
 
 def test_stable_sst5_prompt_shots() -> None:
-    # llama_sst5
-    llama_demos("SST5")
+    prompt_demonstrations = create_demonstrations(
+        "SST5", number_of_demonstrations_per_label=3, number_of_random_demonstrations=1
+    )
 
-    assert False
+    with open("tests/prompt_templates/assets/sst5_demo_reference.txt", "r") as f:
+        prompt_demonstration_target = f.read()
 
-    # llama2_sst5
-    llama2_demos("SST5")
+    assert prompt_demonstrations.strip() == prompt_demonstration_target.strip()
 
-    # opt_sst5
-    opt_demos("SST5")
+
+def test_stable_semeval_prompt_shots() -> None:
+    prompt_demonstrations = create_demonstrations(
+        "SemEval", number_of_demonstrations_per_label=3, number_of_random_demonstrations=1
+    )
+
+    with open("tests/prompt_templates/assets/semeval_demo_reference.txt", "r") as f:
+        prompt_demonstration_target = f.read()
+
+    assert prompt_demonstrations.strip() == prompt_demonstration_target.strip()
+
+
+def test_zero_shot_prompts() -> None:
+    prompt_demonstrations = create_demonstrations(
+        "ZeroShot", number_of_demonstrations_per_label=3, number_of_random_demonstrations=1
+    )
+    # Demonstrations should be empty
+    assert prompt_demonstrations == ""

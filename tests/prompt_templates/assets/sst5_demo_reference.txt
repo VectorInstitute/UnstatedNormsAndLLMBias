@@ -1,0 +1,39 @@
+Text: finally coming down off of miramax 's deep shelves after a couple of aborted attempts , waking up in reno makes a strong case for letting sleeping dogs lie .
+Question: What is the sentiment of the text?
+Answer: Neutral.
+
+Text: looks and feels like a low-budget hybrid of scarface or carlito 's way .
+Question: What is the sentiment of the text?
+Answer: Negative.
+
+Text: the problem with movies about angels is they have a tendency to slip into hokum .
+Question: What is the sentiment of the text?
+Answer: Negative.
+
+Text: the attraction between these two marginal characters is complex from the start -- and , refreshingly , stays that way .
+Question: What is the sentiment of the text?
+Answer: Positive.
+
+Text: it 's lost the politics and the social observation and become just another situation romance about a couple of saps stuck in an inarticulate screenplay .
+Question: What is the sentiment of the text?
+Answer: Negative.
+
+Text: goldmember is funny enough to justify the embarrassment of bringing a barf bag to the moviehouse .
+Question: What is the sentiment of the text?
+Answer: Neutral.
+
+Text: is now stretched to barely feature length , with a little more attention paid to the animation .
+Question: What is the sentiment of the text?
+Answer: Neutral.
+
+Text: in the pianist , polanski is saying what he has long wanted to say , confronting the roots of his own preoccupations and obsessions , and he allows nothing to get in the way .
+Question: What is the sentiment of the text?
+Answer: Positive.
+
+Text: claude chabrol 's camera has a way of gently swaying back and forth as it cradles its characters , veiling tension beneath otherwise tender movements .
+Question: What is the sentiment of the text?
+Answer: Positive.
+
+Text: this is an ungainly movie , ill-fitting , with its elbows sticking out where the knees should be .
+Question: What is the sentiment of the text?
+Answer: Negative.

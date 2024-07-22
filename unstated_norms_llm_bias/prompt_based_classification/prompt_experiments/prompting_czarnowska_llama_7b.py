@@ -1,14 +1,17 @@
 import argparse
 import os
 import random
-import re
 from typing import List, Tuple
 
 import numpy as np
-import pandas as pd
 import torch
 from tqdm.auto import tqdm
 from transformers import pipeline
+
+from unstated_norms_llm_bias.prompt_based_classification.prompt_experiments.utils import (
+    create_demonstrations,
+    extract_predicted_label,
+)
 
 TrueLabel = int
 PredictedLabel = int
@@ -64,38 +67,6 @@ number_of_demonstrations_per_label = N_SHOTS // 3
 number_of_random_demonstrations = N_SHOTS - number_of_demonstrations_per_label * 3
 
 
-def create_demonstrations(dataset: str) -> str:
-    if dataset == "SST5":
-        path = "unstated_norms_llm_bias/prompt_based_classification/resources/processed_sst5.tsv"
-    else:
-        path = "unstated_norms_llm_bias/prompt_based_classification/resources/processed_semeval.tsv"
-    if dataset != "ZeroShot":
-        df = pd.read_csv(path, sep="\t", header=0)
-        # Trying to balance the number of labels represented in the demonstrations
-        sample_df_negative = df.Valence[df.Valence.eq("Negative")].sample(number_of_demonstrations_per_label).index
-        sample_df_neutral = df.Valence[df.Valence.eq("Neutral")].sample(number_of_demonstrations_per_label).index
-        sample_df_positive = df.Valence[df.Valence.eq("Positive")].sample(number_of_demonstrations_per_label).index
-        random_sampled_df = df.sample(number_of_random_demonstrations).index
-        sampled_df = df.loc[
-            sample_df_negative.union(sample_df_neutral).union(sample_df_positive).union(random_sampled_df)
-        ]
-        texts = sampled_df["Text"].tolist()
-        valences = sampled_df["Valence"].tolist()
-
-        demonstrations = ""
-        for text, valence in zip(texts, valences):
-            demonstrations = (
-                f"{demonstrations}Text: {text}\nQuestion: What is the sentiment of the text?\nAnswer: {valence}.\n\n"
-            )
-        print("Example of demonstrations")
-        print("---------------------------------------------------------------------")
-        print(demonstrations)
-        print("---------------------------------------------------------------------")
-        return demonstrations
-    else:
-        return ""
-
-
 def create_prompt_for_text(text: str, demonstrations: str, dataset: str) -> str:
     if dataset != "ZeroShot":
         return f"{demonstrations}Text: {text}\nQuestion: What is the sentiment of the text?\nAnswer:"
@@ -111,16 +82,6 @@ def create_prompts_for_batch(input_texts: List[str], demonstrations: str, datase
     for input_text in input_texts:
         prompts.append(create_prompt_for_text(input_text, demonstrations, dataset))
     return prompts
-
-
-def extract_predicted_label(sequence: str) -> str:
-    match = re.search(r"positive|negative|neutral", sequence, flags=re.IGNORECASE)
-    if match:
-        return match.group().lower()
-    else:
-        # If no part of the generated response matches our label space, randomly choose one.
-        print(f"Unable to match to a valid label in {sequence}")
-        return random.choice(["positive", "negative", "neutral"])
 
 
 def get_predictions_batched(input_texts: List[str], demonstrations: str, dataset: str) -> List[str]:
@@ -198,7 +159,9 @@ if __name__ == "__main__":
             tests.append((label, attribute, group, text))
 
     test_batches = [tests[x : x + BATCH_SIZE] for x in range(0, len(tests), BATCH_SIZE)]
-    demonstrations = create_demonstrations(dataset)
+    demonstrations = create_demonstrations(
+        dataset, number_of_demonstrations_per_label, number_of_random_demonstrations
+    )
     example_prompt = create_prompt_for_text("I did not like that movie at all.", demonstrations, dataset)
     print(f"Example Prompt\n{example_prompt}")
 

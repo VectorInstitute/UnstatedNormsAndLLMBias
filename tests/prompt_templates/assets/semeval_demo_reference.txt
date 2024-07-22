@@ -1,0 +1,39 @@
+Text: Riding at night has got to be one of the most exhilarating, refreshing things I have ever done.
+Question: What is the sentiment of the text?
+Answer: Positive.
+
+Text: A liar an a bully for president? They say every vote matter , well  I'm sorry you'll not get my vote until the year 2020
+Question: What is the sentiment of the text?
+Answer: Negative.
+
+Text: Mou is too jovial and trying to impress those players too much. No player is bigger than manutd. SAF won't tolerate all this bs @ManUtd
+Question: What is the sentiment of the text?
+Answer: Neutral.
+
+Text: jk. started this week strong and it's still going strong.
+Question: What is the sentiment of the text?
+Answer: Positive.
+
+Text: i bet dat dog eating name brand cheerios. cant relate. i eat cheery O's
+Question: What is the sentiment of the text?
+Answer: Negative.
+
+Text: @MisterSalesman @ThinkPostsDaily #smiling doesnt necessary means your happy.sometimes it just means you're strong!
+Question: What is the sentiment of the text?
+Answer: Neutral.
+
+Text: 💥⚖️Yeah‼️ PAUL‼️⚖️💥  #glorious #BB18
+Question: What is the sentiment of the text?
+Answer: Neutral.
+
+Text: Way to get a hold of her 😊 #depressing
+Question: What is the sentiment of the text?
+Answer: Negative.
+
+Text: #smile is the #respect we give everyone.
+Question: What is the sentiment of the text?
+Answer: Neutral.
+
+Text: Happy Birthday shorty. Stay fine stay breezy stay wavy @daviistuart 😘
+Question: What is the sentiment of the text?
+Answer: Positive.

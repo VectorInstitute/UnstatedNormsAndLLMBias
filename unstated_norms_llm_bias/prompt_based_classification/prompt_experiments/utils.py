@@ -1,3 +1,6 @@
+import random
+import re
+
 import pandas as pd
 
 
@@ -33,3 +36,13 @@ def create_demonstrations(
         return demonstrations
     else:
         return ""
+
+
+def extract_predicted_label(sequence: str) -> str:
+    match = re.search(r"positive|negative|neutral", sequence, flags=re.IGNORECASE)
+    if match:
+        return match.group().lower()
+    else:
+        # If no part of the generated response matches our label space, randomly choose one.
+        print(f"Unable to match to a valid label in {sequence}")
+        return random.choice(["positive", "negative", "neutral"])
