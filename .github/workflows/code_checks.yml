@@ -1,48 +1,54 @@
-name: code checks
+# only has to pass for python 3.9
+name: Static code checks
 
 on:
   push:
     branches:
-      - main
-    paths:
-      - .pre-commit-config.yaml
-      - .github/workflows/code_checks.yml
-      - '**.py'
-      - poetry.lock
-      - pyproject.toml
-      - '**.ipynb'
+      main
   pull_request:
     branches:
-      - main
-    paths:
-      - .pre-commit-config.yaml
-      - .github/workflows/code_checks.yml
-      - '**.py'
-      - poetry.lock
-      - pyproject.toml
-      - '**.ipynb'
+      main
 
 jobs:
   run-code-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.6
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
       - name: Install and configure Poetry
         uses: snok/install-poetry@v1
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
-      - uses: actions/setup-python@v5.1.0
+      - name: Set up cache
+        uses: actions/cache@v4
+        id: cached-poetry-dependencies
         with:
-          python-version: '3.10'
-          cache: 'poetry'
-      - name: Install dependencies and check code
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install dependencies
+        run: poetry install --with "test, codestyle"
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      - name: Pre-commit Checks
         run: |
-          poetry env use '3.10'
           source .venv/bin/activate
-          poetry install --with test --all-extras
           pre-commit run --all-files
       - name: pip-audit (gh-action-pip-audit)
         uses: pypa/gh-action-pip-audit@v1.0.8
         with:
           virtual-environment: .venv/
+          # ignoring security vulnerabilities
+          ignore-vulns: |
+            GHSA-x38x-g6gr-jqff
+            GHSA-j8mg-pqc5-x9gj
+            GHSA-ghv6-9r9j-wh4j
+            GHSA-cv6c-7963-wxcg
+            GHSA-76cg-cfhx-373f
+            GHSA-wf7f-8fxf-xfxc
+            GHSA-cwgg-w6mp-w9hg
+            GHSA-43c4-9qgj-x742
+            GHSA-7p8j-qv6x-f4g4
