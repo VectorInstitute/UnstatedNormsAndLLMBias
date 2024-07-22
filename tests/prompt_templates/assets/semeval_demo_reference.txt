@@ -10,7 +10,7 @@ Text: Mou is too jovial and trying to impress those players too much. No player 
 Question: What is the sentiment of the text?
 Answer: Neutral.
 
-Text: jk. started this week strong and it's still going strong.
+Text: jk. started this week strong and it's still going strong. 
 Question: What is the sentiment of the text?
 Answer: Positive.
 

@@ -3,6 +3,7 @@ repos:
     rev: v4.6.0  # Use the ref you want to point at
     hooks:
       - id: trailing-whitespace
+        exclude: tests/prompt_templates/assets/semeval_demo_reference.txt
       - id: check-ast
       - id: check-builtin-literals
       - id: check-docstring-first
@@ -11,7 +12,6 @@ repos:
       - id: end-of-file-fixer
       - id: mixed-line-ending
         args: [--fix=lf]
-      - id: trailing-whitespace
       - id: check-yaml
 
   - repo: https://github.com/PyCQA/flake8
