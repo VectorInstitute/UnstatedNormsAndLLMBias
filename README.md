@@ -50,7 +50,7 @@ The experiment launch scripts (`launch_cot_prompt_experiments.sh` and `launch_pr
 
 ### Visualizations
 
-A notebook for visualizing the results of these predictions over the 5 runs is provided in `visualization` under the name `pure_prompt_fairness_plots.ipynb`. The model visualizes the mean FPR gaps (among others) for the prompting experiments along with the associated confidence intervals.
+Two notebooks for visualizing the results of these predictions over the 5 runs are provided in `visualization` under the name `pure_prompt_fairness_plots_old.ipynb` and `prompting_group_fairness_plots.ipynb`. These notebooks visualize the mean FPR gaps (among others) for the prompting experiments along with the associated confidence intervals. The notebook `pure_prompt_fairness_plots_old.ipynb` uses an older color scheme but is still useful in that it produces slightly simpler figures. The notebook `prompting_group_fairness_plots.ipynb` can be used to reproduce the plots from the paper using the prediction files in the `prompt_based_classification/predictions` folder.
 
 ### Predictions and Artifacts
 
@@ -60,7 +60,7 @@ In addition to the predictions produced by the prompting runs, we have also stor
 
 ### Accuracy Results
 
-To compute the accuracy and standard deviations of the prompt-based classification approaches, the notebook `measure_prompt_results.ipynb` can be used. It acts on the predictions tsv files and computes the accuracy of the predictions against the true values from the Amazon dataset.
+To compute the accuracy and standard deviations of the prompt-based classification approaches, the notebook `measure_prompt_results_accuracy.ipynb` can be used. It acts on the predictions tsv files and computes the accuracy of the predictions against the true values from the Amazon dataset.
 
 ## Citation
 
