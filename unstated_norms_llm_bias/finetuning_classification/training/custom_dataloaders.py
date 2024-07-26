@@ -2,19 +2,18 @@ import math
 from typing import Tuple, Union
 
 import datasets
-import torch
 from datasets import load_dataset
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import DataLoader, Subset, random_split
 from transformers import PreTrainedTokenizer, PreTrainedTokenizerFast
 
 
-def make_train_val_datasets(dataset: datasets.Dataset, split_ratio: float) -> Tuple[Dataset, Dataset]:
+def make_train_val_datasets(dataset: datasets.Dataset, split_ratio: float) -> Tuple[Subset, Subset]:
     assert 0.0 < split_ratio < 1.0
 
     original_length = len(dataset)
     train_length = math.floor(original_length * split_ratio)
     lengths = [train_length, original_length - train_length]
-    return torch.utils.data.random_split(dataset, lengths)
+    return random_split(dataset, lengths)
 
 
 def construct_dataloaders(
@@ -22,33 +21,24 @@ def construct_dataloaders(
     train_split_ratio: float,
     tokenizer: Union[PreTrainedTokenizer, PreTrainedTokenizerFast],
     dataset_name: str,
-    dataset_config: str = None,
 ) -> Tuple[DataLoader, DataLoader, DataLoader]:
-    if dataset_config is None:
-        dataset_dict = load_dataset(dataset_name)
-    else:
-        dataset_config = load_dataset(dataset_name, dataset_config)
-    assert isinstance(dataset_dict, datasets.DatasetDict)
 
-    # Tokenize the text data using the model tokenizer
+    dataset_dict = load_dataset(dataset_name)
     tokenized_dataset_dict = dataset_dict.map(
         lambda row: tokenizer(row["text"], truncation=True, padding="max_length"), batched=True
     )
-
     train_dataset = tokenized_dataset_dict["train"]
-    # Ensure that the dataloader yields PyTorch tensors, not lists of lists.
-    train_dataset.set_format(type="torch", columns=["input_ids", "attention_mask", "label"])
+    test_dataset = tokenized_dataset_dict["test"]
 
     if "validation" in tokenized_dataset_dict.keys():
         val_dataset = tokenized_dataset_dict["validation"]
-        val_dataset.set_format(type="torch", columns=["input_ids", "attention_mask", "label"])
     else:
         # Some datasets (e.g., AG news) just has train and test sets (no validation set)
         # split the original training dataset into a training and validation set.
         train_dataset, val_dataset = make_train_val_datasets(train_dataset, train_split_ratio)
 
-    # Create the test set.
-    test_dataset = tokenized_dataset_dict["test"]
+    train_dataset.set_format(type="torch", columns=["input_ids", "attention_mask", "label"])
+    val_dataset.set_format(type="torch", columns=["input_ids", "attention_mask", "label"])
     test_dataset.set_format(type="torch", columns=["input_ids", "attention_mask", "label"])
 
     # Create pytorch dataloaders from the dataset objects.

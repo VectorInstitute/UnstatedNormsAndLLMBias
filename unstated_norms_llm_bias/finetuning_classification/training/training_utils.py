@@ -3,15 +3,12 @@ from typing import Optional, Tuple
 import torch
 import torch.nn as nn
 import wandb
-from transformers.modeling_outputs import (
-    SequenceClassifierOutput,
-    SequenceClassifierOutputWithPast,
-)
+from transformers.modeling_outputs import SequenceClassifierOutput, SequenceClassifierOutputWithPast
 
 
-def calcuate_accuracy(preds: torch.Tensor, targets: torch.Tensor) -> int:
+def calcuate_n_correct(preds: torch.Tensor, targets: torch.Tensor) -> int:
     n_correct = (preds == targets).sum().item()
-    return n_correct
+    return int(n_correct)
 
 
 def infer(
@@ -44,7 +41,7 @@ def infer(
                 pred_label = torch.argmax(outputs, dim=1)
 
             total_loss += loss.item()
-            n_correct += calcuate_accuracy(pred_label, targets)
+            n_correct += calcuate_n_correct(pred_label, targets)
             n_total += targets.size(0)
             n_batches += 1
             if n_batches % 300 == 0:
@@ -62,9 +59,9 @@ def train(
     device: str,
     n_epochs: int = 1,
     n_training_steps: int = 300,
-    lr=0.00001,
-    weight_decay=0.001,
-    early_stop_threshold=5
+    lr: float = 0.00001,
+    weight_decay: float = 0.001,
+    early_stop_threshold: int = 5,
 ) -> None:
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
     n_steps_per_report = 5
@@ -73,7 +70,7 @@ def train(
     total_training_steps = 0
 
     early_stop = False
-    prev_val_losses = []
+    prev_val_losses: list[float] = []
 
     for epoch_number in range(n_epochs):
         if total_training_steps > n_training_steps or early_stop:
@@ -108,7 +105,7 @@ def train(
 
             wandb.log({"train_loss": batch_loss})
 
-            n_correct += calcuate_accuracy(pred_label, targets)
+            n_correct += calcuate_n_correct(pred_label, targets)
             n_total += targets.size(0)
 
             if batch_number % n_steps_per_report == 0 and batch_number > 1:
