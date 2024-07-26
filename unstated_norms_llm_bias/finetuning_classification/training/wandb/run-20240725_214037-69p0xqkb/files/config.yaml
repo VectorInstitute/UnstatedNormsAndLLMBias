@@ -1,0 +1,59 @@
+wandb_version: 1
+
+model:
+  desc: null
+  value: facebook/opt-125m
+dataset:
+  desc: null
+  value: SST5-Grouped
+model address:
+  desc: null
+  value: /ssd005/projects/llm/fair-llm/opt-125m_sst5_mapped_grouped_8/
+lr:
+  desc: null
+  value: 0.01
+wd:
+  desc: null
+  value: 0.001
+es:
+  desc: null
+  value: 5
+seed:
+  desc: null
+  value: 8
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.12
+    cli_version: 0.17.1
+    framework: huggingface
+    huggingface_version: 4.41.2
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1721958037
+    t:
+      1:
+      - 1
+      - 11
+      - 49
+      - 51
+      - 55
+      - 71
+      2:
+      - 1
+      - 11
+      - 49
+      - 51
+      - 55
+      - 71
+      3:
+      - 13
+      - 15
+      - 16
+      - 23
+      4: 3.10.12
+      5: 0.17.1
+      6: 4.41.2
+      8:
+      - 5
+      13: linux-x86_64

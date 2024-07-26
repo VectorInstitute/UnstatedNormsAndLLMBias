@@ -22,7 +22,7 @@ def construct_dataloaders(
     train_split_ratio: float,
     tokenizer: Union[PreTrainedTokenizer, PreTrainedTokenizerFast],
     dataset_name: str,
-    dataset_config: str = None
+    dataset_config: str = None,
 ) -> Tuple[DataLoader, DataLoader, DataLoader]:
     if dataset_config is None:
         dataset_dict = load_dataset(dataset_name)

@@ -12,7 +12,7 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 DATASET = "jacobthebanana/sst5_mapped_grouped"
 
 
-def set_seeds(seed: int):
+def set_seeds(seed: int) -> None:
 	random.seed(seed)
 	np.random.seed(seed)
 
@@ -46,11 +46,11 @@ def train_classifier(lr: float, wd: float, es: int, seed: int, hf_model_name: st
 	wandb.init(
 		project="fine-tuning classifier",
 		name=wandb_run_name,
-		tags=[""],
+		tags=["final-model"],
 		config={
 			"model": hf_model_name,
-			"dataset": "SST5-Grouped",
-			"model address": output_model_file,
+			"dataset": dataset_name_formatted,
+			"output model address": output_model_file,
 			"lr": lr,
 			"wd": wd,
 			"es": es,

@@ -3,7 +3,10 @@ from typing import Optional, Tuple
 import torch
 import torch.nn as nn
 import wandb
-from transformers.modeling_outputs import SequenceClassifierOutput, SequenceClassifierOutputWithPast
+from transformers.modeling_outputs import (
+    SequenceClassifierOutput,
+    SequenceClassifierOutputWithPast,
+)
 
 
 def calcuate_accuracy(preds: torch.Tensor, targets: torch.Tensor) -> int:
