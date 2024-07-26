@@ -13,7 +13,8 @@ def make_train_val_datasets(dataset: datasets.Dataset, split_ratio: float) -> Tu
     original_length = len(dataset)
     train_length = math.floor(original_length * split_ratio)
     lengths = [train_length, original_length - train_length]
-    return random_split(dataset, lengths)
+    train_dataset, val_dataset = random_split(dataset, lengths)
+    return train_dataset, val_dataset
 
 
 def construct_dataloaders(
