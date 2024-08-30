@@ -137,3 +137,7 @@ settings.json
 
 #mac
 .DS_Store
+
+# generated plots and stats
+unstated_norms_llm_bias/finetuning_classification/visualization/plots/*
+unstated_norms_llm_bias/finetuning_classification/visualization/stats/*
