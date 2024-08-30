@@ -1,0 +1,31 @@
+Average Negative FPR Gap Spans
+----------------------------------------------------
+Model: Llama-2-13B, Span: 0.20654101469873656
+Model: RoBERTa-355M, Span: 0.19754583530847342
+Model: Llama-2-7B, Span: 0.14415797376306125
+Model: RoBERTa-125M, Span: 0.12591934039290797
+Model: OPT-350M, Span: 0.11795637743010867
+Model: OPT-1.3B, Span: 0.1036340287657529
+Model: OPT-6.7B, Span: 0.08119645961783768
+Model: OPT-13B, Span: 0.056464227385408905
+Model: OPT-125M, Span: 0.03914295874875448
+Model: Mistral-7B, Span: 0.03209064327523921
+Model: Llama-3-8B, Span: 0.019801380327925056
+----------------------------------------------------
+Average Positive FPR Gap Spans
+----------------------------------------------------
+Model: RoBERTa-355M, Span: 0.15406087906024687
+Model: RoBERTa-125M, Span: 0.1516134316129615
+Model: OPT-13B, Span: 0.14359950859870754
+Model: Llama-2-13B, Span: 0.14312721812673468
+Model: Mistral-7B, Span: 0.14149672399601682
+Model: OPT-125M, Span: 0.13569615069554622
+Model: Llama-2-7B, Span: 0.13287378287333754
+Model: OPT-350M, Span: 0.13153335153261014
+Model: OPT-1.3B, Span: 0.12768086268014328
+Model: OPT-6.7B, Span: 0.08938847938805097
+Model: Llama-3-8B, Span: 0.08900491400421104
+----------------------------------------------------
+Number of times White group constitutes one of the Gap Extremes
+Negative FPR: 0.5757575757575758
+Positive FPR: 1.0

@@ -1,0 +1,167 @@
+Neg FPR Max Absolute Gap: 0.15678178178175178
+Pos FPR Max Absolute Gap: 0.16649774774771903
+Negative FPR Gap Analysis for Subgroup african_american
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.01567817817817518
+----------------------------------------------------
+Gap for OPT-13B is below threshold with gap of 0.008289539539523659
+Gap for Llama-3-8B is below threshold with gap of -0.0006193693693845457
+Gap for Mistral-7B is below threshold with gap of -0.0011699199199349153
+Gap for OPT-125M is below threshold with gap of 0.0054992492492354885
+Gap for RoBERTa-125M is below threshold with gap of 0.01500250250249146
+Gap for RoBERTa-355M is below threshold with gap of 0.013626126126122629
+----------------------------------------------------
+
+Negative FPR Gap Analysis for Subgroup american_indian
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.01567817817817518
+----------------------------------------------------
+Gap for Llama-2-13B is below threshold with gap of 0.00010010010007558413
+Gap for OPT-1.3B is below threshold with gap of 0.009127877877846153
+Gap for OPT-13B is below threshold with gap of -0.003722472472505238
+Gap for OPT-6.7B is below threshold with gap of -0.01337587587590514
+Gap for Llama-3-8B is below threshold with gap of -0.0007319819820155165
+Gap for Mistral-7B is below threshold with gap of -6.2562562896027045e-06
+Gap for OPT-125M is below threshold with gap of -0.007451201201230086
+----------------------------------------------------
+
+Negative FPR Gap Analysis for Subgroup asian
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.01567817817817518
+----------------------------------------------------
+Gap for OPT-1.3B is below threshold with gap of -0.009866116116077971
+Gap for OPT-13B is below threshold with gap of 0.00919044044047772
+Gap for Llama-3-8B is below threshold with gap of 0.0010698198198593654
+Gap for Mistral-7B is below threshold with gap of 0.0018706206206597377
+Gap for OPT-125M is below threshold with gap of 0.014395645645678181
+Gap for RoBERTa-125M is below threshold with gap of -0.012249749749716052
+Gap for RoBERTa-355M is below threshold with gap of -0.010135135135121973
+----------------------------------------------------
+
+Negative FPR Gap Analysis for Subgroup hispanic
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.01567817817817518
+----------------------------------------------------
+Gap for Llama-2-13B is below threshold with gap of 0.0003628628628504771
+Gap for Llama-2-7B is below threshold with gap of 0.011223723723714277
+Gap for OPT-13B is below threshold with gap of -0.004773523523537932
+Gap for Llama-3-8B is below threshold with gap of 0.00016891891890365371
+Gap for Mistral-7B is below threshold with gap of 0.00040665665664148324
+Gap for OPT-125M is below threshold with gap of -0.0073385885886009024
+Gap for OPT-350M is below threshold with gap of -0.0016328828828861704
+Gap for RoBERTa-125M is below threshold with gap of 0.013763763763752873
+Gap for RoBERTa-355M is below threshold with gap of -0.007882882882883958
+----------------------------------------------------
+
+Negative FPR Gap Analysis for Subgroup pacific_islander
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.01567817817817518
+----------------------------------------------------
+Gap for Llama-2-7B is below threshold with gap of -0.01276276276276952
+Gap for OPT-13B is below threshold with gap of -0.005787037037051332
+Gap for Llama-3-8B is below threshold with gap of -0.0007319819819971457
+Gap for Mistral-7B is below threshold with gap of -0.002296046046060914
+Gap for OPT-125M is below threshold with gap of -0.012068318318330102
+----------------------------------------------------
+
+Negative FPR Gap Analysis for Subgroup white
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.01567817817817518
+----------------------------------------------------
+Gap for OPT-1.3B is below threshold with gap of -0.005586836836799655
+Gap for OPT-13B is below threshold with gap of -0.0031969469469068775
+Gap for OPT-6.7B is below threshold with gap of 0.0005130130130500315
+Gap for Llama-3-8B is below threshold with gap of 0.0008445945946341908
+Gap for Mistral-7B is below threshold with gap of 0.001194944944984214
+Gap for OPT-125M is below threshold with gap of 0.0069632132132474295
+----------------------------------------------------
+
+Positive FPR Gap Analysis for Subgroup african_american
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.016649774774771902
+----------------------------------------------------
+Gap for OPT-13B is below threshold with gap of 0.014502002001996894
+Gap for Llama-3-8B is below threshold with gap of 0.012287287287296111
+Gap for Mistral-7B is below threshold with gap of 0.0066066066066157395
+Gap for OPT-125M is below threshold with gap of -0.006969469469461443
+Gap for RoBERTa-355M is below threshold with gap of -0.013676176176172644
+----------------------------------------------------
+
+Positive FPR Gap Analysis for Subgroup american_indian
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.016649774774771902
+----------------------------------------------------
+Gap for OPT-13B is below threshold with gap of 0.006544044044037333
+Gap for Mistral-7B is below threshold with gap of 0.016629129129151397
+----------------------------------------------------
+
+Positive FPR Gap Analysis for Subgroup asian
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.016649774774771902
+----------------------------------------------------
+Gap for OPT-6.7B is below threshold with gap of 0.008439689689694474
+Gap for Llama-3-8B is below threshold with gap of -0.01338838838841543
+Gap for OPT-125M is below threshold with gap of -0.012374874874898046
+Gap for RoBERTa-125M is below threshold with gap of 0.013813813813781084
+Gap for RoBERTa-355M is below threshold with gap of 0.011098598598585372
+----------------------------------------------------
+
+Positive FPR Gap Analysis for Subgroup hispanic
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.016649774774771902
+----------------------------------------------------
+Gap for Llama-2-7B is below threshold with gap of 0.007469969969970841
+Gap for OPT-13B is below threshold with gap of -0.013313313313315289
+Gap for Llama-3-8B is below threshold with gap of -0.006068568568557686
+Gap for Mistral-7B is below threshold with gap of 0.006606606606615761
+Gap for OPT-125M is below threshold with gap of 0.008345845845852162
+Gap for RoBERTa-125M is below threshold with gap of -0.011974474474464581
+Gap for RoBERTa-355M is below threshold with gap of 0.008170670670671721
+----------------------------------------------------
+
+Positive FPR Gap Analysis for Subgroup pacific_islander
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.016649774774771902
+----------------------------------------------------
+Gap for Llama-2-7B is below threshold with gap of 0.0030780780780794324
+Gap for OPT-1.3B is below threshold with gap of 0.007989239239233215
+----------------------------------------------------
+
+Positive FPR Gap Analysis for Subgroup white
+----------------------------------------------------
+Identifying small gaps (below 0.1 of max absolute gap)
+Gap Threshold is 0.016649774774771902
+----------------------------------------------------
+NONE
+----------------------------------------------------
+
+
+
+Negative FPR Gap Summary
+---------------------------
+Subgroup: african_american, Low Absolute Gap Models: ['OPT-13B', 'Llama-3-8B', 'Mistral-7B', 'OPT-125M', 'RoBERTa-125M', 'RoBERTa-355M']
+Subgroup: american_indian, Low Absolute Gap Models: ['Llama-2-13B', 'OPT-1.3B', 'OPT-13B', 'OPT-6.7B', 'Llama-3-8B', 'Mistral-7B', 'OPT-125M']
+Subgroup: asian, Low Absolute Gap Models: ['OPT-1.3B', 'OPT-13B', 'Llama-3-8B', 'Mistral-7B', 'OPT-125M', 'RoBERTa-125M', 'RoBERTa-355M']
+Subgroup: hispanic, Low Absolute Gap Models: ['Llama-2-13B', 'Llama-2-7B', 'OPT-13B', 'Llama-3-8B', 'Mistral-7B', 'OPT-125M', 'OPT-350M', 'RoBERTa-125M', 'RoBERTa-355M']
+Subgroup: pacific_islander, Low Absolute Gap Models: ['Llama-2-7B', 'OPT-13B', 'Llama-3-8B', 'Mistral-7B', 'OPT-125M']
+Subgroup: white, Low Absolute Gap Models: ['OPT-1.3B', 'OPT-13B', 'OPT-6.7B', 'Llama-3-8B', 'Mistral-7B', 'OPT-125M']
+
+Positive FPR Gap Summary
+---------------------------
+Subgroup: african_american, Low Absolute Gap Models: ['OPT-13B', 'Llama-3-8B', 'Mistral-7B', 'OPT-125M', 'RoBERTa-355M']
+Subgroup: american_indian, Low Absolute Gap Models: ['OPT-13B', 'Mistral-7B']
+Subgroup: asian, Low Absolute Gap Models: ['OPT-6.7B', 'Llama-3-8B', 'OPT-125M', 'RoBERTa-125M', 'RoBERTa-355M']
+Subgroup: hispanic, Low Absolute Gap Models: ['Llama-2-7B', 'OPT-13B', 'Llama-3-8B', 'Mistral-7B', 'OPT-125M', 'RoBERTa-125M', 'RoBERTa-355M']
+Subgroup: pacific_islander, Low Absolute Gap Models: ['Llama-2-7B', 'OPT-1.3B']
+Subgroup: white, Low Absolute Gap Models: []
