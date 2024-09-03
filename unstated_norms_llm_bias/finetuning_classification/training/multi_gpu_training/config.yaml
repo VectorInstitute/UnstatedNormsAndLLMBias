@@ -1,0 +1,75 @@
+model: <path-to-model-weights>  # Path to model weights
+enable_wandb_logging: True
+
+wandb_config:
+  project: <your-project-name>  # Weights & Biases project name
+  name: <your-experiment-name>  # Unique name for this specific experiment
+  tags: ["lora_finetuning"]
+
+train_parameters:
+  output_dir: <path-to-output-directory>
+  max_seq_len: 2048
+  epochs: 3
+  seed: <random-seed>
+
+  # Sharding strategy
+  sharding_strategy: FULL_SHARD
+
+  # Memory
+  use_mp: True
+  use_activation_checkpointing: True
+  use_flash_attention: True
+  low_cpu_mem_usage: True
+
+  # LoRA config
+  lora_peft_config:
+    task_type: CAUSAL_LM
+    inference_mode: False
+    r: 8
+    lora_alpha: 32
+    lora_dropout: 0.1
+
+  # Gradient norm clipping
+  max_grad_norm: 1
+  gradient_accumulation_steps: 4
+
+  # Early stop threshold
+  early_stop_threshold: <early-stop-threshold>
+
+  # Optimizer
+  optimizer:
+    lr: <learning-rate> 
+    weight_decay: <weight-decay>
+    betas: [0.9, 0.95]
+    eps: 1.0e-5
+
+  # Scheduler
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.05
+
+  # Checkpointing
+  checkpointing_enabled: False
+  logging_steps: 20
+  save_frequency: .25
+
+dataset:
+  ignore_index: -100
+  eval_bs: 8
+  train_bs: 8
+  train_ds: <path-to-train-dataset>  # Path to processed train dataset
+  eval_ds: <path-to-eval-dataset>  # Path to processed evaluation dataset
+
+dataset_preprocess:
+  ignore_index: -100
+  dataset_format: hf
+  data_field: text
+  packing_type: partial
+  add_bos_eos_tokens: True
+  from_disk: True
+  load_path: <path-to-loaded-dataset> # Path where dataset is loaded from
+  split: <dataset-split>  # 'train' or 'validation'
+  save_path: <path-to-save-processed-data> # Path to save processed data
+  truncate: False
+  seperator: "[LBL]"
+  pre_pend: "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n ### Instruction:\nClassify the following text as negative (0), neutral (1), or positive (2).\n\n### Input:\n"
+

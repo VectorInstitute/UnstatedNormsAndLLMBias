@@ -62,6 +62,20 @@ In addition to the predictions produced by the prompting runs, we have also stor
 
 To compute the accuracy and standard deviations of the prompt-based classification approaches, the notebook `measure_prompt_results_accuracy.ipynb` can be used. It acts on the predictions tsv files and computes the accuracy of the predictions against the true values from the Amazon dataset.
 
+## Fine-Tuning Classification Experiments
+All of the code used for classification experiments through fine-tuning is housed in the `finetuning_classification` folder. Below are details around the folder contents and how experiments are run.
+
+### Predictions and Artifacts
+All of the predictions produced by the fine-tuning experiments across five runs for the paper are housed in the `predictions/` folder.
+
+Within this folder, there are two sets of directories:
+
+- `fully-fine-tuned`: Contains prediction files for the smaller models that have been fully fine-tuned. Each file is named following the format `TEMPLATE-NAME_MODEL-NAME.tsv`, where `TEMPLATE-NAME` is the name of the template and `MODEL-NAME` is the name of the model.
+- `lora-fine-tuned`: Contains prediction files for the larger models that have been fine-tuned using LoRA. These files follow the same naming structure as those in the `fully-fine-tuned` directory.
+
+
+
+
 ## Citation
 
 We hope that the repository will be useful to both NLP practitioners and researchers working on bias quantification and mitigation research. If you find this code or the paper useful please cite
