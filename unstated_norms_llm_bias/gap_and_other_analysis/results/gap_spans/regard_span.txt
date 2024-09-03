@@ -1,0 +1,117 @@
+Negative FPR Gap Analysis for Model Llama-2-13B
+----------------------------------------------------
+Gap Span is: 0.24561403508721757
+
+Negative FPR Gap Analysis for Model Llama-2-7B
+----------------------------------------------------
+Gap Span is: 0.11929824561387606
+
+Negative FPR Gap Analysis for Model OPT-1.3B
+----------------------------------------------------
+Gap Span is: 0.11578947368400737
+
+Negative FPR Gap Analysis for Model OPT-13B
+----------------------------------------------------
+Gap Span is: 0.09941520467897265
+
+Negative FPR Gap Analysis for Model OPT-6.7B
+----------------------------------------------------
+Gap Span is: 0.07719298245664204
+
+Negative FPR Gap Analysis for Model Llama-3-8B
+----------------------------------------------------
+Gap Span is: 0.007602339181025287
+
+Negative FPR Gap Analysis for Model Mistral-7B
+----------------------------------------------------
+Gap Span is: 0.04210526315774699
+
+Negative FPR Gap Analysis for Model OPT-125M
+----------------------------------------------------
+Gap Span is: 0.05263157894780239
+
+Negative FPR Gap Analysis for Model OPT-350M
+----------------------------------------------------
+Gap Span is: 0.13684210526293936
+
+Negative FPR Gap Analysis for Model RoBERTa-125M
+----------------------------------------------------
+Gap Span is: 0.10350877193007078
+
+Negative FPR Gap Analysis for Model RoBERTa-355M
+----------------------------------------------------
+Gap Span is: 0.2649122807011573
+
+Positive FPR Gap Analysis for Model Llama-2-13B
+----------------------------------------------------
+Gap Span is: 0.1030303030299908
+
+Positive FPR Gap Analysis for Model Llama-2-7B
+----------------------------------------------------
+Gap Span is: 0.12474747474725004
+
+Positive FPR Gap Analysis for Model OPT-1.3B
+----------------------------------------------------
+Gap Span is: 0.02272727272648531
+
+Positive FPR Gap Analysis for Model OPT-13B
+----------------------------------------------------
+Gap Span is: 0.030303030302226815
+
+Positive FPR Gap Analysis for Model OPT-6.7B
+----------------------------------------------------
+Gap Span is: 0.003030303030293847
+
+Positive FPR Gap Analysis for Model Llama-3-8B
+----------------------------------------------------
+Gap Span is: 0.046969696969051865
+
+Positive FPR Gap Analysis for Model Mistral-7B
+----------------------------------------------------
+Gap Span is: 0.057575757575179076
+
+Positive FPR Gap Analysis for Model OPT-125M
+----------------------------------------------------
+Gap Span is: 0.1484848484841919
+
+Positive FPR Gap Analysis for Model OPT-350M
+----------------------------------------------------
+Gap Span is: 0.13838383838275586
+
+Positive FPR Gap Analysis for Model RoBERTa-125M
+----------------------------------------------------
+Gap Span is: 0.12727272727214423
+
+Positive FPR Gap Analysis for Model RoBERTa-355M
+----------------------------------------------------
+Gap Span is: 0.17727272727188015
+
+Negative FPR Gap Span Summary
+----------------------------------------------------
+Model: RoBERTa-355M, Span: 0.2649122807011573
+Model: Llama-2-13B, Span: 0.24561403508721757
+Model: OPT-350M, Span: 0.13684210526293936
+Model: Llama-2-7B, Span: 0.11929824561387606
+Model: OPT-1.3B, Span: 0.11578947368400737
+Model: RoBERTa-125M, Span: 0.10350877193007078
+Model: OPT-13B, Span: 0.09941520467897265
+Model: OPT-6.7B, Span: 0.07719298245664204
+Model: OPT-125M, Span: 0.05263157894780239
+Model: Mistral-7B, Span: 0.04210526315774699
+Model: Llama-3-8B, Span: 0.007602339181025287
+----------------------------------------------------
+
+Positive FPR Gap Span Summary
+----------------------------------------------------
+Model: RoBERTa-355M, Span: 0.17727272727188015
+Model: OPT-125M, Span: 0.1484848484841919
+Model: OPT-350M, Span: 0.13838383838275586
+Model: RoBERTa-125M, Span: 0.12727272727214423
+Model: Llama-2-7B, Span: 0.12474747474725004
+Model: Llama-2-13B, Span: 0.1030303030299908
+Model: Mistral-7B, Span: 0.057575757575179076
+Model: Llama-3-8B, Span: 0.046969696969051865
+Model: OPT-13B, Span: 0.030303030302226815
+Model: OPT-1.3B, Span: 0.02272727272648531
+Model: OPT-6.7B, Span: 0.003030303030293847
+----------------------------------------------------
