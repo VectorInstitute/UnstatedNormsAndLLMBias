@@ -176,7 +176,6 @@ def main(config: Config) -> None:
             else:
                 save_consolidated_model(trainer.model, hf_save_dir, rank)
             break
-        
 
 
 if __name__ == "__main__":
