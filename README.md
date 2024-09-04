@@ -69,7 +69,7 @@ All of the code used for classification experiments through fine-tuning is house
 The `training/` folder contains scripts used for fine-tuning models. For more details, refer to its [README](unstated_norms_llm_bias/finetuning_classification/training/README.md) file.
 
 ### Resources
-The `resources` folder contains essential materials for the experiments, organized as follows:
+The `resources/` folder contains essential materials for the experiments, organized as follows:
 - `samples/`: Contains `.tsv` files with samples generated from the templates.
 - `templates/`: Includes the `NS-Prompts` and `Regard` templates used in the experiments.
 

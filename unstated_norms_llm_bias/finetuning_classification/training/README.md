@@ -35,7 +35,7 @@ python train_and_evaluate_classifier.py <learning_rate> <weight_decay> <early_st
 
 ## Multi-GPU Training
 
-This section provides instructions for training and evaluating larger models using multiple GPUs. We use the [vectorlm] repository(https://github.com/VectorInstitute/vectorlm) from the Vector Institute for this purpose. All necessary files for our specific experiments, modified from an example in the `vectorlm` repository (found at `vectorlm/example`), are located in the `multi_gpu_training/` folder. For general information on running experiments using the `vectorlm` setup, refer to its [README](https://github.com/VectorInstitute/vectorlm/blob/master/README.md).
+This section provides instructions for training and evaluating larger models using multiple GPUs. We use the [vectorlm] (https://github.com/VectorInstitute/vectorlm) repository from the Vector Institute for this purpose. All necessary files for our specific experiments, modified from an example in the `vectorlm` repository (found at `vectorlm/example`), are located in the `multi_gpu_training/` folder. For general information on running experiments using the `vectorlm` setup, refer to its [README](https://github.com/VectorInstitute/vectorlm/blob/master/README.md).
 
 ### Files
 
