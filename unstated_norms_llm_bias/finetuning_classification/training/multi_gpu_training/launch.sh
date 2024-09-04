@@ -13,7 +13,7 @@
 #SBATCH --wait-all-nodes=1
 #SBATCH --time=<time-limit>
 
-export NCCL_IB_DISABLE=1 
+export NCCL_IB_DISABLE=1
 export NCCL_DEBUG=WARN
 export NCCL_DEBUG_SUBSYS=WARN
 export NCCL_P2P_DISABLE=1

@@ -38,7 +38,7 @@ train_parameters:
 
   # Optimizer
   optimizer:
-    lr: <learning-rate> 
+    lr: <learning-rate>
     weight_decay: <weight-decay>
     betas: [0.9, 0.95]
     eps: 1.0e-5
@@ -72,4 +72,3 @@ dataset_preprocess:
   truncate: False
   seperator: "[LBL]"
   pre_pend: "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n ### Instruction:\nClassify the following text as negative (0), neutral (1), or positive (2).\n\n### Input:\n"
-
