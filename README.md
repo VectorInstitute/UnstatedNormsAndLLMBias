@@ -74,7 +74,7 @@ The `resources` folder contains essential materials for the experiments, organiz
 - `templates/`: Includes the `NS-Prompts` and `Regard` templates used in the experiments.
 
 ### Predictions and Artifacts
-All of the predictions produced by the fine-tuning experiments across five runs for the paper are housed in the `predictions/` folder. Within this folder, there are two directories:
+All of the predictions produced by the fine-tuning experiments across five runs for the paper are housed in the `predictions/` folder. Within this folder, there are two folders:
 - `fully-fine-tuned/`: Contains prediction files for the smaller models that have been fully fine-tuned. Each file is named following the format `TEMPLATE-NAME_MODEL-NAME.tsv`, where `TEMPLATE-NAME` is the name of the template dataset and `MODEL-NAME` is the name of the model.
 - `lora-fine-tuned/`: Contains prediction files for the larger models that have been fine-tuned using LoRA. These files follow the same naming structure as those in the `fully-fine-tuned/` folder.
 
@@ -82,7 +82,7 @@ All of the predictions produced by the fine-tuning experiments across five runs 
 The notebook for visualizing the results of predictions over the five runs is provided in the `visualization/` folder under the name `finetuning_group_fairness_plots.ipynb`. This notebook visualizes the mean FPR gaps (both positive and negative sentiment) for the fine-tuning experiments, along with the associated confidence intervals.
 
 ### Accuracy Results
-To compute the accuracy and standard deviations of fine-tuning classification approaches, the notebook `measure_prompt_results_accuracy.ipynb` can be used. This notebook is the same as the one found in the [`prompt_based_classification`](prompt_based_classification) folder.
+To compute the accuracy and standard deviations of fine-tuning classification approaches, the notebook `measure_prompt_results_accuracy.ipynb` can be used. This notebook is the same as the one found in the [`prompt_based_classification`](unstated_norms_llm_bias/prompt_based_classification) folder.
 
 ## Citation
 
