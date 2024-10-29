@@ -37,8 +37,8 @@ OutputEntry = Tuple[
 
 PATH_STUB = "unstated_norms_llm_bias/prompt_based_classification/resources"
 TEST_FILE_PATH = f"{PATH_STUB}/sentiment_fairness_tests.tsv"
-MODEL = "Llama3-7B"
-NUM_PARAMS: float = 7.0  # billions
+MODEL = "Llama3-8B"
+NUM_PARAMS: float = 8.0  # billions
 BATCH_SIZE = 8
 N_SHOTS = 9
 
