@@ -1,6 +1,6 @@
-# Unstated Norms and LLM Bias
+# Template-Based Probes and LLM Bias
 
-This repository houses the code used to produce the experiments in the paper "The Impact of Unstated Norms in Bias Analysis of Language Models"
+This repository houses the code used to produce the experiments in the paper "Template-Based Probes Are Imperfect Lenses for Counterfactual Bias Evaluation in LLMs"
 
 For information about setting up the environment to run the experiments, see the documentation in [CONTRIBUTING.MD](CONTRIBUTING.MD).
 
