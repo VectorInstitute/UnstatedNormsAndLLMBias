@@ -21,7 +21,7 @@ In `shot_dataset_processing/` there are two notebooks used to create the subsamp
 
 ### Prediction Scripts
 
-The python scripts for the prompt setup, LLM generation, and answer extraction is housed in `prompt_experiments`. These scripts cover the construction of zero-shot, 9-shot, and CoT prompts for the OPT-6.7B, LLaMA-7B, and Llama-2-7B models. They use the HuggingFace generation pipeline and all of the code necessary for predictions on the Amazon dataset. The code relies on model artifacts hosted on Vector's cluster. However, these models were taken directly from Hugging Face's hosting of these models. So the paths can be substituted for these model artifacts if you have access and the space to store them.
+The python scripts for the prompt setup, LLM generation, and answer extraction is housed in `prompt_experiments`. These scripts cover the construction of zero-shot, 9-shot, and CoT prompts for the OPT-6.7B, LLaMA-7B, Llama-2-7B, Llama-3-8b, and Mistral-7B models. They use the HuggingFace generation pipeline and all of the code necessary for predictions on the Amazon dataset. The code relies on model artifacts hosted on Vector's cluster. However, these models were taken directly from Hugging Face's hosting of these models. So the paths can be substituted for these model artifacts if you have access and the space to store them.
 
 These scripts have seeds indexed by the run IDs (run_1, run_2, ..., run_5) to facilitate reproducibility.
 
@@ -37,12 +37,12 @@ Note that, by convention, when doing experiments with CoT, we pass in SST5 to ha
 These SLURM scripts are meant specifically for the Vector HPC cluster and the size of the LLMs require a high-quality GPU. In our case, we use A40s.
 
 The experiment launch scripts (`launch_cot_prompt_experiments.sh` and `launch_prompt_experiments.sh`) are meant to automate launching a full set of experiments across models. Each script takes in the arguments `RUN_ID` and `DATASET`, just like the slrm scripts with the same effect.
-* `launch_prompt_experiments.sh`: Launches a single run of standard prompting experiments across OPT-6.7B, LLaMA-7B, and Llama-2-7B.
+* `launch_prompt_experiments.sh`: Launches a single run of standard prompting experiments across OPT-6.7B, LLaMA-7B, Llama-2-7B, Llama-3-8b, and Mistral-7B models.
     * To run a single prompted classification run on the Amazon dataset for all of the models using 9-shot prompts with demonstrations drawn from SST5 one would run
     ```bash
     ./unstated_norms_llm_bias/prompt_based_classification/launch_prompt_experiments.sh "run_1" "SST5"`
     ```
-* `launch_cot_prompt_experiments.sh`: Launches a single run of Zero-shot CoT prompting experiments across LLaMA-7B, and Llama-2-7B.
+* `launch_cot_prompt_experiments.sh`: Launches a single run of Zero-shot CoT prompting experiments across LLaMA-7B, Llama-2-7B, Llama-3-8b, and Mistral-7B models.
     * To run a single zero-shot prompted classification run on the Amazon dataset for all of the models.
     ```bash
     ./unstated_norms_llm_bias/prompt_based_classification/launch_cot_prompt_experiments.sh "run_1" "SST5"`
@@ -89,9 +89,9 @@ To compute the accuracy and standard deviations of fine-tuning classification ap
 We hope that the repository will be useful to both NLP practitioners and researchers working on bias quantification and mitigation research. If you find this code or the paper useful please cite
 ```
 @misc{kohankhaki2024impactunstatednormsbias,
-      title={The Impact of Unstated Norms in Bias Analysis of Language Models},
-      author={Farnaz Kohankhaki and Jacob-Junqi Tian and David Emerson and Laleh Seyyed-Kalantari and Faiza Khan Khattak},
-      year={2024},
+      title={Template-Based Probes Are Imperfect Lenses for Counterfactual Bias Evaluation in LLMs},
+      author={D.B. Emerson and Farnaz Kohankhaki and Jacob-Junqi Tian and Laleh Seyyed-Kalantari and Faiza Khan Khattak},
+      year={2025},
       eprint={2404.03471},
       archivePrefix={arXiv},
       primaryClass={cs.CL},
