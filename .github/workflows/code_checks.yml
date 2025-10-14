@@ -41,14 +41,6 @@ jobs:
         uses: pypa/gh-action-pip-audit@v1.1.0
         with:
           virtual-environment: .venv/
-          # ignoring security vulnerabilities
+          # GHSA-4xh5-x5gv-qwph is a pip vulnerability without a fix yet.
           ignore-vulns: |
-            GHSA-x38x-g6gr-jqff
-            GHSA-j8mg-pqc5-x9gj
-            GHSA-ghv6-9r9j-wh4j
-            GHSA-cv6c-7963-wxcg
-            GHSA-76cg-cfhx-373f
-            GHSA-wf7f-8fxf-xfxc
-            GHSA-cwgg-w6mp-w9hg
-            GHSA-43c4-9qgj-x742
-            GHSA-7p8j-qv6x-f4g4
+            GHSA-4xh5-x5gv-qwph
