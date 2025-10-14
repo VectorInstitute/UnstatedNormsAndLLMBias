@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "unstated_norms_and_llm_bias"
 version = "1.0.0"
-description = "A repository containing experimental code for the paper The Impact of Unstated Norms in Bias Analysis of Language Models"
+description = "A repository containing experimental code for the paper Template-Based Probes Are Imperfect Lenses for Counterfactual Bias Evaluation in LLMs"
 authors = ["Vector AI Engineering <ai_engineering@vectorinstitute.ai>"]
 license = "Apache-2.0"
 repository = "https://github.com/VectorInstitute/UnstatedNormsAndLLMBias"
@@ -11,7 +11,7 @@ package-mode = false
 [tool.poetry.dependencies]
 python = ">=3.9, <3.13"
 numpy = "^1.24"
-torch = "2.2.2"
+torch = "^2.2.2"
 nltk = "^3.8.1"
 ipykernel = "^6.25.1"
 transformers = "^4.36.2"
