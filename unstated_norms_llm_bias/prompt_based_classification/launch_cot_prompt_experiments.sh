@@ -45,4 +45,11 @@ SBATCH_COMMAND="unstated_norms_llm_bias/prompt_based_classification/slrm_scripts
 echo "Running sbatch command ${SBATCH_COMMAND}"
 sbatch ${SBATCH_COMMAND}
 
+# Qwen
+SBATCH_COMMAND="unstated_norms_llm_bias/prompt_based_classification/slrm_scripts/run_qwen2_5_experiment_cot.slrm \
+    ${RUN_ID} \
+    ${DATASET}"
+echo "Running sbatch command ${SBATCH_COMMAND}"
+sbatch ${SBATCH_COMMAND}
+
 echo Experiments Launched
