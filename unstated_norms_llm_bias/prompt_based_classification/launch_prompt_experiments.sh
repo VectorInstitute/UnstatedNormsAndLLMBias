@@ -15,7 +15,7 @@
 RUN_ID=$1
 DATASET=$2
 
-# Run the ID and DATASET for each of the OPT, llama, llama2, llama3, and Mistral models
+# Run the ID and DATASET for each of the OPT, llama, llama2, llama3, Mistral, and Qwen models
 
 # OPT
 SBATCH_COMMAND="unstated_norms_llm_bias/prompt_based_classification/slrm_scripts/run_opt_experiment.slrm \
@@ -53,7 +53,13 @@ echo "Running sbatch command ${SBATCH_COMMAND}"
 sbatch ${SBATCH_COMMAND}
 
 # Qwen
-SBATCH_COMMAND="unstated_norms_llm_bias/prompt_based_classification/slrm_scripts/run_qwen_experiment.slrm \
+SBATCH_COMMAND="unstated_norms_llm_bias/prompt_based_classification/slrm_scripts/run_qwen2_5_experiment.slrm \
+    ${RUN_ID} \
+    ${DATASET}"
+echo "Running sbatch command ${SBATCH_COMMAND}"
+sbatch ${SBATCH_COMMAND}
+
+SBATCH_COMMAND="unstated_norms_llm_bias/prompt_based_classification/slrm_scripts/run_qwen2_5_7b_experiment.slrm \
     ${RUN_ID} \
     ${DATASET}"
 echo "Running sbatch command ${SBATCH_COMMAND}"

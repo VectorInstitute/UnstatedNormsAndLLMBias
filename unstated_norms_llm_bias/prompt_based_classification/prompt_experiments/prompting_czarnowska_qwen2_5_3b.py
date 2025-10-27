@@ -1,13 +1,17 @@
 import argparse
 import os
 import random
-import re
 from typing import List, Tuple
 
 import numpy as np
 import torch
 from tqdm.auto import tqdm
 from transformers import pipeline
+
+from unstated_norms_llm_bias.prompt_based_classification.prompt_experiments.utils import (
+    create_demonstrations,
+    extract_predicted_label,
+)
 
 TrueLabel = int
 PredictedLabel = int
@@ -33,9 +37,10 @@ OutputEntry = Tuple[
 
 PATH_STUB = "unstated_norms_llm_bias/prompt_based_classification/resources"
 TEST_FILE_PATH = f"{PATH_STUB}/sentiment_fairness_tests.tsv"
-MODEL = "qwen2_5-3B CoT"
-NUM_PARAMS: float = 7.0  # billions
-BATCH_SIZE = 4
+MODEL = "qwen2_5-3B"
+NUM_PARAMS: float = 3.0  # billions
+BATCH_SIZE = 8
+N_SHOTS = 9
 
 SEEDS = {
     "run_1": 2024,
@@ -46,7 +51,7 @@ SEEDS = {
 }
 
 # Path on cluster for model artifacts. Must be hugging face compatible.
-MODEL_PATH = "/model-weights/qwen2.5-3B-Instruct"
+MODEL_PATH = "/model-weights/Qwen2.5-3B-Instruct"
 generator = pipeline("text-generation", model=MODEL_PATH, device="cuda")
 
 # Czarnowska Labels
@@ -58,74 +63,33 @@ label_lookup = {
 
 reverse_label_lookup = {label_int: label_str for label_str, label_int in label_lookup.items()}
 
-
-def create_reasoning_prompt_for_text(text: str) -> str:
-    text_part = f"Text: {text}"
-    question_part = "Question: Is the sentiment of the text negative, neutral, or positive?"
-    reasoning_part = "Reasoning: Let's think step by step"
-    return f"{text_part}\n{question_part}\n{reasoning_part}"
+number_of_demonstrations_per_label = N_SHOTS // 3
+number_of_random_demonstrations = N_SHOTS - number_of_demonstrations_per_label * 3
 
 
-def create_answer_prompt_for_text(prompt: str, reasoning: str) -> str:
-    return f"{prompt}{reasoning}\nAnswer: Therefore, from negative, neutral, or positive, the sentiment is"
+def create_prompt_for_text(text: str, demonstrations: str, dataset: str) -> str:
+    if dataset != "ZeroShot":
+        return f"{demonstrations}Text: {text}\nQuestion: What is the sentiment of the text?\nAnswer:"
+    else:
+        return (
+            f"Text: {text}\nQuestion: Is the sentiment of the text negative, neutral, or "
+            "positive?\nAnswer: The sentiment is"
+        )
 
 
-def create_reasoning_prompts_for_batch(input_texts: List[str]) -> List[str]:
+def create_prompts_for_batch(input_texts: List[str], demonstrations: str, dataset: str) -> List[str]:
     prompts = []
     for input_text in input_texts:
-        prompts.append(create_reasoning_prompt_for_text(input_text))
+        prompts.append(create_prompt_for_text(input_text, demonstrations, dataset))
     return prompts
 
 
-def create_answer_prompts_for_batch(reasoning_prompts: List[str], reasonings: List[str]) -> List[str]:
-    prompts = []
-    for prompt, reasoning in zip(reasoning_prompts, reasonings):
-        prompts.append(create_answer_prompt_for_text(prompt, reasoning))
-    return prompts
-
-
-def extract_predicted_label(sequence: str) -> str:
-    match = re.search(r"positive|negative|neutral", sequence, flags=re.IGNORECASE)
-    if match:
-        return match.group().lower()
-    else:
-        # If no part of the generated response matches our label space, randomly choose one.
-        print(f"Unable to match to a valid label in {sequence}")
-        return random.choice(["positive", "negative", "neutral"])
-
-
-def get_predictions_batched(input_texts: List[str]) -> List[str]:
+def get_predictions_batched(input_texts: List[str], demonstrations: str, dataset: str) -> List[str]:
     predicted_labels = []
-    reasoning_texts = []
-    answer_texts = []
-    # First get reasoning generations
-    reasoning_prompts = create_reasoning_prompts_for_batch(input_texts)
-    # for reasoning_prompt in reasoning_prompts:
-    # print(f"REASONING PROMPT\n{reasoning_prompt}\n#################")
-    # Generate Reasoning
-    batched_reasoning_sequences = generator(
-        reasoning_prompts, do_sample=True, max_new_tokens=64, temperature=0.8, return_full_text=False
-    )
-
-    # Construct answer prompts
-    for reasoning_sequence in batched_reasoning_sequences:
-        reasoning_text = reasoning_sequence[0]["generated_text"]
-        # print(f"REASONING RESPONSE\n{reasoning_text}\n#################")
-        reasoning_texts.append(reasoning_text)
-
-    answer_prompts = create_answer_prompts_for_batch(reasoning_prompts, reasoning_texts)
-    # for answer_prompt in answer_prompts:
-    # print(f"ANSWER PROMPT\n{answer_prompt}\n#################")
-    # Generate Answers
-    batched_answer_sequences = generator(
-        answer_prompts, do_sample=True, max_new_tokens=3, temperature=0.8, return_full_text=False
-    )
-
-    # Extract Answers
-    for prompt_sequence in batched_answer_sequences:
+    prompts = create_prompts_for_batch(input_texts, demonstrations, dataset)
+    batched_sequences = generator(prompts, do_sample=True, max_new_tokens=3, temperature=0.8, return_full_text=False)
+    for prompt_sequence in batched_sequences:
         generated_text = prompt_sequence[0]["generated_text"]
-        # print(f"ANSWER RESPONSE\n{generated_text}\n#################")
-        answer_texts.append(generated_text)
         predicted_label = extract_predicted_label(generated_text)
         predicted_labels.append(predicted_label)
     assert len(predicted_labels) == len(input_texts)
@@ -152,7 +116,7 @@ if __name__ == "__main__":
     # Append results to this file.
 
     PREDICTION_STUB = "unstated_norms_llm_bias/prompt_based_classification/predictions"
-    PREDICTION_FILE_PATH = f"{PREDICTION_STUB}/qwen2_5_3b/qwen2_5_3b_prompt_predictions_zero_cot_{run_id}.tsv"
+    PREDICTION_FILE_PATH = f"{PREDICTION_STUB}/qwen2_5_3b/qwen2_5_3b_prompt_predictions_{dataset}_{run_id}.tsv"
 
     # Setting random seed according to run ID
     SEED = SEEDS[run_id]
@@ -195,17 +159,18 @@ if __name__ == "__main__":
             tests.append((label, attribute, group, text))
 
     test_batches = [tests[x : x + BATCH_SIZE] for x in range(0, len(tests), BATCH_SIZE)]
-    example_reasoning_prompt = create_reasoning_prompt_for_text("I did not like that movie at all.")
-    print(f"Example Reasoning Prompt\n{example_reasoning_prompt}")
-    example_answer_prompt = create_answer_prompt_for_text(example_reasoning_prompt, " SOME REASONING GENERATION")
-    print(f"Example Answer Prompt\n{example_answer_prompt}")
+    demonstrations = create_demonstrations(
+        dataset, number_of_demonstrations_per_label, number_of_random_demonstrations
+    )
+    example_prompt = create_prompt_for_text("I did not like that movie at all.", demonstrations, dataset)
+    print(f"Example Prompt\n{example_prompt}")
 
     # Append to the output file instead of overwriting.
     with open(PREDICTION_FILE_PATH, "a") as prediction_file:
         for batch in tqdm(test_batches):
             output: List[OutputEntry] = []
             text_batch = [test_case[-1] for test_case in batch]  # Extract texts from the batch.
-            predictions = get_predictions_batched(text_batch)
+            predictions = get_predictions_batched(text_batch, demonstrations, dataset)
 
             for prediction, test_entry in zip(predictions, batch):
                 label, attribute, group, text = test_entry

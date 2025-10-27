@@ -41,7 +41,7 @@ fi
 RUN_NAME=$1
 DATASET=$2
 
-VENV_PATH=/ssd003/projects/aieng/public/prompt_engineering/
+VENV_PATH=/h/demerson/unstated_norms
 echo "Python Venv Path: ${VENV_PATH}"
 
 echo "World size: ${SLURM_NTASKS}"
