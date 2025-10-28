@@ -12,7 +12,7 @@ from transformers import pipeline
 TrueLabel = int
 PredictedLabel = int
 Category = str
-Group = str 
+Group = str
 TestText = str
 Model = str
 RunID = str
