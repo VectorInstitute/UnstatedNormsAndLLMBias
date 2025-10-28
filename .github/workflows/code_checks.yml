@@ -42,5 +42,7 @@ jobs:
         with:
           virtual-environment: .venv/
           # GHSA-4xh5-x5gv-qwph is a pip vulnerability without a fix yet.
+          # GHSA-3749-ghw9-m3mg torch vulernability in 2.6.0 (can't upgrade due to cluster)
           ignore-vulns: |
             GHSA-4xh5-x5gv-qwph
+            GHSA-3749-ghw9-m3mg
