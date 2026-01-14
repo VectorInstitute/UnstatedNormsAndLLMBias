@@ -1,4 +1,4 @@
-# only has to pass for python 10
+# only has to pass for python 3.10
 name: Static code checks
 
 on:
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v6
         with:
-          python-version: 3.10
+          python-version: "3.10"
       - name: Install and configure Poetry
         uses: snok/install-poetry@v1
         with:
@@ -41,9 +41,6 @@ jobs:
         uses: pypa/gh-action-pip-audit@v1.1.0
         with:
           virtual-environment: .venv/
-          # GHSA-4xh5-x5gv-qwph is a pip vulnerability without a fix yet.
           # GHSA-3749-ghw9-m3mg torch vulernability in 2.6.0 (can't upgrade due to cluster)
           ignore-vulns: |
-            GHSA-4xh5-x5gv-qwph
             GHSA-3749-ghw9-m3mg
-            GHSA-887c-mr87-cxwp

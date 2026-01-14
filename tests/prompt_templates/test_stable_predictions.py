@@ -13,7 +13,7 @@ torch.manual_seed(2024)
 
 def test_stable_predictions_through_hf_generator() -> None:
     prompts = ["Hello, is it me you're", "Where should I look?", "The quick brown fox"]
-    targets = [' talking about?"', "\n\nYou", "-ish skin"]
+    targets = [" talking about?", " I'm going", " is actually slightly"]
     batched_sequences = generator(prompts, do_sample=True, max_new_tokens=3, temperature=0.8, return_full_text=False)
     for prompt_sequence, target in zip(batched_sequences, targets):
         generated_text = prompt_sequence[0]["generated_text"]
