@@ -22,7 +22,8 @@ plotly = "^5.13.1"
 scikit-learn = "^1.2.2"
 kaleido = "0.2.1"
 pyarrow = "19.0.0"
-filelock = "3.20.0"
+filelock = "^3.20.0"
+virtualenv = "^20.36.1"
 
 [tool.poetry.group.codestyle.dependencies]
 black = "^24.3.0"

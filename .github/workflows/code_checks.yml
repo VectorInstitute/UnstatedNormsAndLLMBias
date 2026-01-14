@@ -41,6 +41,7 @@ jobs:
         uses: pypa/gh-action-pip-audit@v1.1.0
         with:
           virtual-environment: .venv/
-          # GHSA-3749-ghw9-m3mg torch vulernability in 2.6.0 (can't upgrade due to cluster)
+          # GHSA-3749-ghw9-m3mg, CVE-2025-3730 torch vulnerabilities in 2.6.0 (can't upgrade due to cluster)
           ignore-vulns: |
             GHSA-3749-ghw9-m3mg
+            CVE-2025-3730
