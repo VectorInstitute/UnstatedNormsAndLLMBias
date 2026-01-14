@@ -88,10 +88,10 @@ To compute the accuracy and standard deviations of fine-tuning classification ap
 
 We hope that the repository will be useful to both NLP practitioners and researchers working on bias quantification and mitigation research. If you find this code or the paper useful please cite
 ```
-@misc{kohankhaki2024impactunstatednormsbias,
+@misc{kohankhaki2026impactunstatednormsbias,
       title={Template-Based Probes Are Imperfect Lenses for Counterfactual Bias Evaluation in LLMs},
-      author={D.B. Emerson and Farnaz Kohankhaki and Jacob-Junqi Tian and Laleh Seyyed-Kalantari and Faiza Khan Khattak},
-      year={2025},
+      author={Farnaz Kohankhaki and D.B. Emerson and Jacob-Junqi Tian and Laleh Seyyed-Kalantari and Faiza Khan Khattak},
+      year={2026},
       eprint={2404.03471},
       archivePrefix={arXiv},
       primaryClass={cs.CL},
